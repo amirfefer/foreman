@@ -25,6 +25,8 @@
       <% end %>
     </tbody>
   </table>
+  <br>
+  <%= link_to _("For more information"), config_reports_path(:search=>"host = #{host}", :host => @url.host, :port => @url.port, :protocol => @url.scheme, :only_path => false) %>
 <% else %>
   <b><%= _("No logs to show") %></b>
 <% end %>
