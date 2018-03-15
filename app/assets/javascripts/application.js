@@ -23,9 +23,19 @@ $(document).on("page:fetch", function() {
   tfm.nav.activate();
 });
 
+// $(document).on("page:restore", function() {
+//   tfm.nav.activate();
+//   $().setupVerticalNavigation(false);
+//   $('script[data-turbolinks-eval="always"]').each(
+//     function() {
+//        eval($(this).text());
+//     }
+//  );
+// });
 $(document).on("page:change", tfm.tools.hideSpinner)
 
 $(function() {
+  Turbolinks.pagesCached(0);
   tfm.nav.init();
   $(document).trigger('ContentLoad');
 });
