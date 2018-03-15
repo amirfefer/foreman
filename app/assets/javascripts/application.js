@@ -23,18 +23,11 @@ $(document).on("page:fetch", function() {
   tfm.nav.activate();
 });
 
-// $(document).on("page:restore", function() {
-//   tfm.nav.activate();
-//   $().setupVerticalNavigation(false);
-//   $('script[data-turbolinks-eval="always"]').each(
-//     function() {
-//        eval($(this).text());
-//     }
-//  );
-// });
 $(document).on("page:change", tfm.tools.hideSpinner)
 
 $(function() {
+  // turbolinks classic cached pages have an issue with react integration
+  // https://github.com/reactjs/react-rails/blob/18a4f5b4c44ab58ad0dd77c5e9315e3cb0edba1f/react_ujs/src/events/turbolinksClassicDeprecated.js#L4
   Turbolinks.pagesCached(0);
   tfm.nav.init();
   $(document).trigger('ContentLoad');
