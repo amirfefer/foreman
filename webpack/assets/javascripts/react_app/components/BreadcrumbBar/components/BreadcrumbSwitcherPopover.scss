@@ -1,0 +1,16 @@
+@import '../../../common/colors';
+
+.popover-content {
+    max-height: $switcher-max-height;
+    overflow-y: auto;
+    max-width: $switcher-max-width;
+    min-width: $switcher-max-width;
+
+  .no-border {
+    border: none;
+  }
+}
+
+#breadcrumb-switcher-popover {
+    z-index: 1000 !important;
+}
