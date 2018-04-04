@@ -33,7 +33,7 @@ const fixtures = {
   'should handle BREADCRUMB_BAR_RESOURCES_SUCCESS': {
     action: {
       type: BREADCRUMB_BAR_RESOURCES_SUCCESS,
-      payload: [...resourceList],
+      payload: { items: [...resourceList], page: 1, pages: 2 },
     },
   },
   'should handle BREADCRUMB_BAR_RESOURCES_FAILURE': {

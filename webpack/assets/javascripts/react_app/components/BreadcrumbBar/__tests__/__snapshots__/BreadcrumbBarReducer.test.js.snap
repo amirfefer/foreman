@@ -2,8 +2,10 @@
 
 exports[`BreadcrumbBar reducer should handle BREADCRUMB_BAR_CLOSE_SWITCHER 1`] = `
 Object {
+  "currentPage": null,
   "isLoadingResources": false,
   "isSwitcherOpen": false,
+  "pages": null,
   "requestError": null,
   "resourceSwitcherItems": Array [],
 }
@@ -11,8 +13,10 @@ Object {
 
 exports[`BreadcrumbBar reducer should handle BREADCRUMB_BAR_RESOURCES_FAILURE 1`] = `
 Object {
+  "currentPage": null,
   "isLoadingResources": false,
   "isSwitcherOpen": false,
+  "pages": null,
   "requestError": [Error: some error],
   "resourceSwitcherItems": Array [],
 }
@@ -20,8 +24,10 @@ Object {
 
 exports[`BreadcrumbBar reducer should handle BREADCRUMB_BAR_RESOURCES_REQUEST 1`] = `
 Object {
+  "currentPage": null,
   "isLoadingResources": true,
   "isSwitcherOpen": false,
+  "pages": null,
   "requestError": null,
   "resourceSwitcherItems": Array [],
 }
@@ -29,8 +35,10 @@ Object {
 
 exports[`BreadcrumbBar reducer should handle BREADCRUMB_BAR_RESOURCES_SUCCESS 1`] = `
 Object {
+  "currentPage": 1,
   "isLoadingResources": false,
   "isSwitcherOpen": false,
+  "pages": 2,
   "requestError": null,
   "resourceSwitcherItems": Array [
     Object {
@@ -61,8 +69,10 @@ Object {
 
 exports[`BreadcrumbBar reducer should handle BREADCRUMB_BAR_TOGGLE_SWITCHER 1`] = `
 Object {
+  "currentPage": null,
   "isLoadingResources": false,
   "isSwitcherOpen": true,
+  "pages": null,
   "requestError": null,
   "resourceSwitcherItems": Array [],
 }
@@ -70,8 +80,10 @@ Object {
 
 exports[`BreadcrumbBar reducer should return the initial state 1`] = `
 Object {
+  "currentPage": null,
   "isLoadingResources": false,
   "isSwitcherOpen": false,
+  "pages": null,
   "requestError": null,
   "resourceSwitcherItems": Array [],
 }

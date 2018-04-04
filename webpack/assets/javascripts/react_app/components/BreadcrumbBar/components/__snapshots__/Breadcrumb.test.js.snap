@@ -27,11 +27,17 @@ exports[`Breadcrumbs renders breadcrumbs menu 1`] = `
 `;
 
 exports[`Breadcrumbs renders h1 title 1`] = `
-<div
-  className="form-group"
+<Breadcrumb
+  title={false}
 >
-  <h1>
-    title
-  </h1>
-</div>
+  <BreadcrumbItem
+    active={true}
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "title",
+      }
+    }
+    key="0"
+  />
+</Breadcrumb>
 `;

@@ -32,6 +32,7 @@ const Breadcrumb = ({
 Breadcrumb.propTypes = {
   children: PropTypes.node,
   title: PropTypes.bool,
+  isTitle: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.shape({
     caption: PropTypes.string.isRequired,
     url: PropTypes.string,
@@ -41,6 +42,7 @@ Breadcrumb.propTypes = {
 Breadcrumb.defaultProps = {
   children: null,
   title: false,
+  isTitle: false,
   items: [],
 };
 

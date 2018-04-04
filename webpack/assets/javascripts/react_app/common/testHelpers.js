@@ -35,6 +35,11 @@ export default {
 export const classFunctionUnitTest = (obj, func, objThis, args) =>
   obj.prototype[func].apply(objThis, args);
 
+/**
+ * Test a component with fixtures and snapshots
+ * @param  {ReactComponent} Component Component to test
+ * @param  {Object}         fixtures  key=fixture description, value=props to apply
+ */
 export const testComponentSnapshotsWithFixtures = (Component, fixtures) => {
   Object.entries(fixtures).forEach(([description, props]) =>
     it(description, () => {

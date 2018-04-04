@@ -6,6 +6,10 @@
   max-width: $switcher-max-width;
   min-width: $switcher-max-width;
 
+  .breadcrumb-switcher-popover-error {
+    color: #FF0000;
+  }
+
   .list-group-item {
     padding: 5px 3px;
 

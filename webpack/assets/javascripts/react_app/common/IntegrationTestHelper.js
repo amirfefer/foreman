@@ -6,6 +6,13 @@ import thunk from 'redux-thunk';
 
 export default class IntegrationTestHelper {
   /**
+   * Wait for all the promises in the test to get resolved
+   * @return {Promise}
+   */
+  static flushAllPromises() {
+    return new Promise(resolve => setImmediate(resolve));
+  }
+  /**
    * Create an integration-test-helper
    * @param {ReduxReducers} reducers reducers to apply
    */

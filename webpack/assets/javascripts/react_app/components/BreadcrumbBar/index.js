@@ -11,7 +11,7 @@ const mapStateToProps = ({ breadcrumbBar }) => ({
   resourceSwitcherItems: breadcrumbBar.resourceSwitcherItems,
   isSwitcherOpen: breadcrumbBar.isSwitcherOpen,
   isLoadingResources: breadcrumbBar.isLoadingResources,
-  requestError: breadcrumbBar.requestError,
+  hasError: breadcrumbBar.requestError !== null,
   currentPage: breadcrumbBar.currentPage,
   totalPages: breadcrumbBar.pages,
 });
