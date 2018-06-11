@@ -9,8 +9,8 @@ const AlertLink = ({ children, ...props }) => (
 
 AlertLink.propTypes = {
   children: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  onClick: PropTypes.func,
+  href: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AlertLink;

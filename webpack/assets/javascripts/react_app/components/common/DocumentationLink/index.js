@@ -1,9 +1,10 @@
 import React from 'react';
 import { MenuItem } from 'patternfly-react';
+import PropTypes from 'prop-types';
 import Icon from '../Icon';
 
-export default ({ href, id = 'documentationLink' }) => {
-  const handleClick = (e) => {
+const DocumentationLink = ({ href, id }) => {
+  const handleClick = e => {
     e.preventDefault();
     window.open(href, '_blank');
   };
@@ -14,4 +15,15 @@ export default ({ href, id = 'documentationLink' }) => {
       {` ${__('Documentation')}`}
     </MenuItem>
   );
+};
+
+export default DocumentationLink;
+
+DocumentationLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};
+
+DocumentationLink.defaultProps = {
+  id: 'documentationLink',
 };

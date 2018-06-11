@@ -18,17 +18,21 @@ export function templateSelected(item) {
         // As Instance Type values will take precence over templates values,
         // we don't update memory/cores values if  instance type is already selected
         if (!$('#host_compute_attributes_instance_type').val()) {
-          $('[id$=_memory]').val(result.memory).trigger('change');
+          $('[id$=_memory]')
+            .val(result.memory)
+            .trigger('change');
           $('[id$=_cores]').val(result.cores);
         }
-        $('#network_interfaces').children('.fields').remove();
-        $.each(result.interfaces, function () {
+        $('#network_interfaces')
+          .children('.fields')
+          .remove();
+        $.each(result.interfaces, function() {
           addNetworkInterface(this);
         });
         $('#storage_volumes .children_fields >.fields').remove();
-        $.each(result.volumes, function () {
+        $.each(result.volumes, function() {
           // Change variable name because 'interface' is a reserved keyword.
-          this.disk_interface = this['interface'];
+          this.disk_interface = this.interface;
           addVolume(this);
         });
         const templateSelector = $('#host_compute_attributes_template');
@@ -57,9 +61,13 @@ export function instanceTypeSelected(item) {
       url,
       data: `instance_type_id=${instanceType}`,
       success(result) {
-        $('[id$=_memory]').val(result.memory).trigger('change');
+        $('[id$=_memory]')
+          .val(result.memory)
+          .trigger('change');
         $('[id$=_cores]').val(result.cores);
-        const instanceTypeSelector = $('#host_compute_attributes_instance_type');
+        const instanceTypeSelector = $(
+          '#host_compute_attributes_instance_type'
+        );
 
         if (instanceTypeSelector.is(':disabled')) {
           instanceTypeSelector.val(result.id).trigger('change');
@@ -88,9 +96,14 @@ function addNetworkInterface({ name, network }) {
 }
 
 // fill in the template volumes.
-// eslint-disable-next-line camelcase
+/* eslint-disable camelcase */
 function addVolume({
-  size_gb, storage_domain, bootable, id, disk_interface, wipe_after_delete,
+  size_gb,
+  storage_domain,
+  bootable,
+  id,
+  disk_interface,
+  wipe_after_delete,
 }) {
   // eslint-disable-next-line no-undef
   const newId = add_child_node($('#storage_volumes .add_nested_fields'));
@@ -103,11 +116,16 @@ function addVolume({
   if (id) {
     $(`[id$=${newId}_id]`).val(id);
   }
-  $(`[id$=${newId}_storage_domain]`).next().hide();
+  $(`[id$=${newId}_storage_domain]`)
+    .next()
+    .hide();
 }
 
 function disableElement(element) {
-  element.clone().attr('type', 'hidden').appendTo(element);
+  element
+    .clone()
+    .attr('type', 'hidden')
+    .appendTo(element);
   element.attr('disabled', 'disabled');
 }
 
@@ -133,8 +151,12 @@ export function clusterSelected(item) {
     success(result) {
       const networkOptions = $('select[id$=_network]').empty();
 
-      $.each(result, function () {
-        networkOptions.append($('<option />').val(this.id).text(this.name));
+      $.each(result, function() {
+        networkOptions.append(
+          $('<option />')
+            .val(this.id)
+            .text(this.name)
+        );
       });
     },
     complete() {

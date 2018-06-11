@@ -19,4 +19,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 export const reducers = { passwordStrength: reducer };
 
 // export connected component
-export default connect(mapStateToProps, mapDispatchToProps)(PasswordStrength);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PasswordStrength);

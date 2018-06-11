@@ -58,13 +58,21 @@ class BreadcrumbBar extends React.Component {
               onOpen={() => this.handleOpen()}
               onResourceClick={() => closeSwitcher()}
               onSearchChange={event =>
-                loadSwitcherResourcesByResource(resource, { searchQuery: event.target.value })
+                loadSwitcherResourcesByResource(resource, {
+                  searchQuery: event.target.value,
+                })
               }
               onNextPageClick={() =>
-                loadSwitcherResourcesByResource(resource, options({ pageIncrement: 1 }))
+                loadSwitcherResourcesByResource(
+                  resource,
+                  options({ pageIncrement: 1 })
+                )
               }
               onPrevPageClick={() =>
-                loadSwitcherResourcesByResource(resource, options({ pageIncrement: -1 }))
+                loadSwitcherResourcesByResource(
+                  resource,
+                  options({ pageIncrement: -1 })
+                )
               }
               searchValue={searchQuery}
               onSearchClear={() => removeSearchQuery(resource)}
@@ -98,7 +106,9 @@ BreadcrumbBar.propTypes = {
   toggleSwitcher: PropTypes.func,
   closeSwitcher: PropTypes.func,
   loadSwitcherResourcesByResource: PropTypes.func,
-  onSearchChange: PropTypes.func,
+  searchDebounceTimeout: PropTypes.number,
+  searchQuery: PropTypes.string.isRequired,
+  removeSearchQuery: PropTypes.func.isRequired,
 };
 
 BreadcrumbBar.defaultProps = {
@@ -116,7 +126,6 @@ BreadcrumbBar.defaultProps = {
   toggleSwitcher: noop,
   closeSwitcher: noop,
   loadSwitcherResourcesByResource: noop,
-  onSearchChange: noop,
   searchDebounceTimeout: 300,
 };
 
