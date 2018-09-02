@@ -5,10 +5,21 @@ import mockStoryData from './ChartBox.fixtures';
 
 storiesOf('Components/Charts', module)
   .add('Loading', () => (
-    <ChartBox chart={{ data: [] }} noDataMsg={'No data here'} title="Title" status="PENDING" />
+    <ChartBox
+      chart={{ data: [] }}
+      noDataMsg={'No data here'}
+      title="Title"
+      status="PENDING"
+    />
   ))
   .add('Without Data', () => (
-    <ChartBox type="donut" chart={{ data: [] }} noDataMsg={'No data here'} title="Title" status="RESOLVED" />
+    <ChartBox
+      type="donut"
+      chart={{ data: [] }}
+      noDataMsg={'No data here'}
+      title="Title"
+      status="RESOLVED"
+    />
   ))
   .add('With Error', () => (
     <ChartBox

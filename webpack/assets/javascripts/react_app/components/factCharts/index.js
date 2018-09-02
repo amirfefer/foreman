@@ -18,7 +18,11 @@ class FactChart extends React.Component {
   }
 
   openModal() {
-    const { showModal, getChartData, data: { id, path, title } } = this.props;
+    const {
+      showModal,
+      getChartData,
+      data: { id, path, title },
+    } = this.props;
 
     getChartData(path, id);
     showModal(id, title);
@@ -84,7 +88,7 @@ class FactChart extends React.Component {
                   {// eslint-disable-next-line no-undef
                   Jed.sprintf(
                     n__('(%s host)', '(%s hosts)', factChart.hostsCount),
-                    factChart.hostsCount,
+                    factChart.hostsCount
                   )}
                 </small>
               </Modal.Title>
@@ -114,4 +118,7 @@ const mapStateToProps = (state, ownProps) => ({
   modalToDisplay: state.factChart.modalToDisplay[ownProps.data.id] || false,
 });
 
-export default connect(mapStateToProps, FactChartActions)(FactChart);
+export default connect(
+  mapStateToProps,
+  FactChartActions
+)(FactChart);

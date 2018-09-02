@@ -1,8 +1,12 @@
 {
   "root": true,
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -46,6 +50,7 @@
     ],
     // Import rules off for now due to HoundCI issue
     "import/no-unresolved": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "prettier/prettier": "error"
   }
 }

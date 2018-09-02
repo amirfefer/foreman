@@ -32,9 +32,11 @@ function setup(state = initialState) {
     },
   };
 
-  const component = (<Provider store={mockStore(state)}>
+  const component = (
+    <Provider store={mockStore(state)}>
       <BookmarksContainer {...props} />
-    </Provider>);
+    </Provider>
+  );
 
   return {
     props,
@@ -45,9 +47,15 @@ function setup(state = initialState) {
 describe('bookmarks loading', () => {
   const loadBookmarksScenario = ({ state, getBookmarksCalls }) => {
     jest.mock('../../redux/actions/bookmarks');
-    BookmarkActions.getBookmarks = jest.fn().mockReturnValue(onSuccessActions[1]);
-    mount(setup(state).component).find(Dropdown).simulate('click');
-    expect(BookmarkActions.getBookmarks.mock.calls.length).toBe(getBookmarksCalls);
+    BookmarkActions.getBookmarks = jest
+      .fn()
+      .mockReturnValue(onSuccessActions[1]);
+    mount(setup(state).component)
+      .find(Dropdown)
+      .simulate('click');
+    expect(BookmarkActions.getBookmarks.mock.calls.length).toBe(
+      getBookmarksCalls
+    );
     jest.unmock('../../redux/actions/bookmarks');
   };
 
@@ -75,7 +83,8 @@ describe('bookmarks loading', () => {
   };
 
   Object.keys(fixtures).forEach(testCase =>
-    it(testCase, () => loadBookmarksScenario(fixtures[testCase])));
+    it(testCase, () => loadBookmarksScenario(fixtures[testCase]))
+  );
 });
 
 describe('bookmarks', () => {
@@ -93,24 +102,34 @@ describe('bookmarks', () => {
   });
 
   it('should show no bookmarks if server did not respond with any', () => {
-    expect(toJson(render(setup(afterSuccessNoResults).component))).toMatchSnapshot();
+    expect(
+      toJson(render(setup(afterSuccessNoResults).component))
+    ).toMatchSnapshot();
   });
   it('should include existing bookmarks for the current controller', () => {
-    expect(mount(setup(afterSuccess).component).find('Bookmark').length).toBe(2);
+    expect(mount(setup(afterSuccess).component).find('Bookmark').length).toBe(
+      2
+    );
   });
   it('should not allow creating a new bookmark for users who dont have permission', () => {
     const { props } = setup();
 
     props.canCreate = false;
 
-    const wrapper = mount(<Provider store={mockStore(afterSuccess)}>
+    const wrapper = mount(
+      <Provider store={mockStore(afterSuccess)}>
         <BookmarksContainer {...props} />
-      </Provider>);
+      </Provider>
+    );
 
     expect(wrapper.find('MenuItem#newBookmarks').length).toBe(0);
   });
   it('should hide the modal form intiailly', () => {
-    expect(mount(setup().component).find('BookmarkContainer').props().showModal).toBe(false);
+    expect(
+      mount(setup().component)
+        .find('BookmarkContainer')
+        .props().showModal
+    ).toBe(false);
   });
 
   xit('should open the modal form for new bookmark', () => {
@@ -128,9 +147,15 @@ describe('bookmarks', () => {
 
     const formWrapper = wrapper.find('SearchModal');
 
-    formWrapper.find('input [name="name"]').simulate('change', { target: { value: 'Joe.D' } });
-    formWrapper.find('textarea [name="query"]').simulate('change', { target: { value: 'search' } });
-    formWrapper.find('input [name="publik"]').simulate('change', { target: { value: false } });
+    formWrapper
+      .find('input [name="name"]')
+      .simulate('change', { target: { value: 'Joe.D' } });
+    formWrapper
+      .find('textarea [name="query"]')
+      .simulate('change', { target: { value: 'search' } });
+    formWrapper
+      .find('input [name="publik"]')
+      .simulate('change', { target: { value: false } });
 
     formWrapper.find('form').simulate('submit');
     expect(wrapper.find('Bookmark').length).toEqual(1);
