@@ -25,6 +25,7 @@
     "compression-webpack-plugin": "~1.1.11",
     "coveralls": "^3.0.0",
     "css-loader": "^0.23.1",
+    "cypress": "^3.1.1",
     "dotenv": "^5.0.0",
     "enzyme": "^3.4.0",
     "enzyme-adapter-react-16": "^1.4.0",
@@ -119,7 +120,8 @@
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "postinstall": "node ./script/npm_install_plugins.js",
-    "analyze": "./script/webpack-analyze"
+    "analyze": "./script/webpack-analyze",
+    "cypress:open": "cypress open"
   },
   "jest": {
     "automock": true,
