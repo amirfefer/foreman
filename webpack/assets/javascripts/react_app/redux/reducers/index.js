@@ -12,6 +12,8 @@ import { reducers as layoutReducers } from '../../components/Layout';
 import { reducers as diffModalReducers } from '../../components/ConfigReports/DiffModal';
 import factChart from './factCharts';
 
+const lastAction = (state = null, action) => action;
+
 export function combineReducersAsync(asyncReducers) {
   return combineReducers({
     bookmarks,
@@ -27,6 +29,7 @@ export function combineReducersAsync(asyncReducers) {
     ...searchBarReducers,
     ...diffModalReducers,
     factChart,
+    lastAction,
   });
 }
 

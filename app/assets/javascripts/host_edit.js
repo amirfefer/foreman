@@ -496,10 +496,23 @@ function load_with_placeholder(target, url, data){
         });
 }
 
+function onBreadCrumbChangeHost(store) {
+  var store = store();
+  var last_action_name = store.lastAction.type;
+  
+  if (last_action_name === 'BREADCRUMB_BAR_SWITCHED_RESORUCES') {
+    $('#status').addClass('status-ok');
+  }
+
+  if (store.breadcrumbsBar.requestError) {
+    $('#status').addClass('status-error');
+  }
+
+}
 function onHostEditLoad(){
   update_interface_table();
   tfm.hostgroups.checkForUnavailablePuppetclasses();
-
+  var unsubscribe = tfm.subscribe(onBreadCrumbChangeHost);
   $("#host-conflicts-modal").modal({show: "true", backdrop: "static"});
    $('#host-conflicts-modal').click(function(){
      $('#host-conflicts-modal').modal('hide');
