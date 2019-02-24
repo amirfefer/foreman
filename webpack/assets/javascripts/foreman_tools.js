@@ -21,6 +21,16 @@ export function iconText(name, innerText, iconClass) {
   return icon;
 }
 
+export function showContent(state) {
+  const store = state();
+
+  if (store.layout.items.length) {
+    if (!store.layout.isLoading && $('#content').is(':hidden')) {
+      $('#content').show();
+    }
+  }
+}
+
 export function activateDatatables() {
   $('[data-table=inline]')
     .not('.dataTable')
