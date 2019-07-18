@@ -9,6 +9,8 @@ import { getActive, getCurrentPath, handleMenuClick } from './LayoutHelper';
 import LayoutContainer from './components/LayoutContainer';
 import TaxonomySwitcher from './components/TaxonomySwitcher';
 import UserDropdowns from './components/UserDropdowns';
+import Slot from '../../components/common/Slot';
+
 import './layout.scss';
 
 class Layout extends React.Component {
@@ -117,6 +119,7 @@ class Layout extends React.Component {
               onOrgClick={changeOrganization}
               isLoading={isLoading}
             />
+            <Slot id="layoutTop" />
             <UserDropdowns
               notificationUrl={data.notification_url}
               user={data.user}
