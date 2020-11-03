@@ -7,6 +7,7 @@ var ForemanVendorPlugin = require('@theforeman/vendor').WebpackForemanVendorPlug
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var pluginUtils = require('../script/plugin_webpack_directories');
 var vendorEntry = require('./webpack.vendor');
@@ -176,6 +177,14 @@ module.exports = env => {
       new ExtractTextPlugin({
         filename: cssFilename,
         allChunks: true
+      }),
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        },
+        canPrint: true
       }),
       new webpack.DefinePlugin({
         'process.env': {
